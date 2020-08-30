@@ -83,4 +83,26 @@ class HolidayCalendarTest {
         holidayCalendar.makeDateAsHoliday(LocalDate.of(2014, 1, 1));
         assertTrue(holidayCalendar.isHoliday(aJanuaryFirst));
     }
+
+    @Test
+    @DisplayName("a day can not be holiday")
+    void aDayCanNotBeHoliday() {
+        LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        assertFalse(holidayCalendar.isHoliday(aJanuaryFirst));
+    }
+
+    @Test
+    @DisplayName("more than one day can be holiday")
+    void moreThanOneDayCanBeHoliday() {
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        holidayCalendar.makeDateAsHoliday(LocalDate.of(2014, 1, 1));
+        holidayCalendar.makeDateAsHoliday(LocalDate.of(2014, 12, 25));
+
+        LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
+        LocalDate aChristmas = LocalDate.of(2014, 12, 25);
+
+        assertTrue(holidayCalendar.isHoliday(aJanuaryFirst));
+        assertTrue(holidayCalendar.isHoliday(aChristmas));
+    }
 }
