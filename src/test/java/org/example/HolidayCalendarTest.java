@@ -5,14 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class HolidayCalendarTest {
+class HolidayCalendarTest {
 
     @Test
     void test01() {
         LocalDate aSaturday = LocalDate.of(2014, 3, 1);
         HolidayCalendar holidayCalendar = new HolidayCalendar();
+        holidayCalendar.makeDateOfWeekHoliday(DayOfWeek.SATURDAY);
         assertTrue(holidayCalendar.isHoliday(aSaturday));
     }
 
@@ -27,6 +29,8 @@ public class HolidayCalendarTest {
     void test03() {
         LocalDate aSunday = LocalDate.of(2014, 3, 2);
         HolidayCalendar holidayCalendar = new HolidayCalendar();
+        holidayCalendar.makeDateOfWeekHoliday(DayOfWeek.SUNDAY);
         assertTrue(holidayCalendar.isHoliday(aSunday));
     }
+
 }
