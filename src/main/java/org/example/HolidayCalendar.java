@@ -41,4 +41,8 @@ public class HolidayCalendar {
     public void makeDateAsHoliday(LocalDate aDate) {
         daysHoliday.add(aDate);
     }
+
+    public void makeDateAsHoliday(LocalDate from, LocalDate to, DayOfWeek aDayOfWeek) {
+
+    }
 }
