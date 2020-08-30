@@ -13,9 +13,21 @@ public class HolidayCalendar {
     private final List<LocalDate> daysHoliday = new ArrayList<>();
 
     public boolean isHoliday(LocalDate aDate) {
-        return daysOfWeekHolidays.contains(aDate.getDayOfWeek()) ||
-                daysOfMonthHoliday.contains(MonthDay.from(aDate)) ||
-                daysHoliday.contains(aDate);
+        return isDayOfWeekHoliday(aDate) ||
+                isDayOfMonthHoliday(aDate) ||
+                isDateHoliday(aDate);
+    }
+
+    private boolean isDateHoliday(LocalDate aDate) {
+        return daysHoliday.contains(aDate);
+    }
+
+    private boolean isDayOfMonthHoliday(LocalDate aDate) {
+        return daysOfMonthHoliday.contains(MonthDay.from(aDate));
+    }
+
+    private boolean isDayOfWeekHoliday(LocalDate aDate) {
+        return daysOfWeekHolidays.contains(aDate.getDayOfWeek());
     }
 
     public void makeDateOfWeekHoliday(DayOfWeek dayOfWeek) {
