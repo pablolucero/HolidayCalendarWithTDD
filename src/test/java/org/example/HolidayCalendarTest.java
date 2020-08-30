@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class HolidayCalendarTest {
 
     @Test
-    @DisplayName("a day can be holiday")
-    void aDayCanBeHoliday() {
+    @DisplayName("a day of week can be holiday")
+    void aDayOfWeekCanBeHoliday() {
         LocalDate aSaturday = LocalDate.of(2014, 3, 1);
         HolidayCalendar holidayCalendar = new HolidayCalendar();
         holidayCalendar.makeDateOfWeekHoliday(DayOfWeek.SATURDAY);
@@ -42,4 +42,37 @@ class HolidayCalendarTest {
         assertTrue(holidayCalendar.isHoliday(aSaturday));
         assertTrue(holidayCalendar.isHoliday(aSunday));
     }
+
+    @Test
+    @DisplayName("a day of month can be holiday")
+    void aDayOfMonthCanBeHoliday() {
+        LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        holidayCalendar.makeDateOfMonthHoliday(1, 1);
+        assertTrue(holidayCalendar.isHoliday(aJanuaryFirst));
+    }
+
+    @Test
+    @DisplayName("a day of month can not be holiday")
+    void aDayOfMonthCanNotBeHoliday() {
+        LocalDate aChristmas = LocalDate.of(2014, 12, 25);
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        holidayCalendar.makeDateOfMonthHoliday(1, 1);
+        assertFalse(holidayCalendar.isHoliday(aChristmas));
+    }
+
+    @Test
+    @DisplayName("more than one day of month can be holiday")
+    void moreThanOneDayOfMonthCanBeHoliday() {
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        holidayCalendar.makeDateOfMonthHoliday(1, 1);
+        holidayCalendar.makeDateOfMonthHoliday(12, 25);
+
+        LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
+        LocalDate aChristmas = LocalDate.of(2014, 12, 25);
+
+        assertTrue(holidayCalendar.isHoliday(aJanuaryFirst));
+        assertTrue(holidayCalendar.isHoliday(aChristmas));
+    }
+
 }
