@@ -8,4 +8,5 @@ public class HolidayCalendar {
     public boolean isHoliday(LocalDate aDate) {
         return aDate.getDayOfWeek().equals(DayOfWeek.SATURDAY);
     }
+
 }

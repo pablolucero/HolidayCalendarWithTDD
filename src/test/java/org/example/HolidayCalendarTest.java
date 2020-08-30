@@ -22,4 +22,11 @@ public class HolidayCalendarTest {
         HolidayCalendar holidayCalendar = new HolidayCalendar();
         assertFalse(holidayCalendar.isHoliday(aMonday));
     }
+
+    @Test
+    void test03() {
+        LocalDate aSunday = LocalDate.of(2014, 3, 2);
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        assertTrue(holidayCalendar.isHoliday(aSunday));
+    }
 }
