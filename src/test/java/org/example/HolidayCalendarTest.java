@@ -1,12 +1,13 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-public class XXXTest {
+public class HolidayCalendarTest {
 
     @Test
     void test01() {
@@ -15,4 +16,10 @@ public class XXXTest {
         assertTrue(holidayCalendar.isHoliday(aSaturday));
     }
 
+    @Test
+    void test02() {
+        LocalDate aMonday = LocalDate.of(2014, 3, 3);
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        assertFalse(holidayCalendar.isHoliday(aMonday));
+    }
 }
