@@ -75,4 +75,12 @@ class HolidayCalendarTest {
         assertTrue(holidayCalendar.isHoliday(aChristmas));
     }
 
+    @Test
+    @DisplayName("a day can be holiday")
+    void aDayCanBeHoliday() {
+        LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        holidayCalendar.makeDateAsHoliday(LocalDate.of(2014, 1, 1));
+        assertTrue(holidayCalendar.isHoliday(aJanuaryFirst));
+    }
 }
