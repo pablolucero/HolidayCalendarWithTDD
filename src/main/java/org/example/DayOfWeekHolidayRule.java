@@ -3,7 +3,7 @@ package org.example;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class DayOfWeekHolidayRule {
+public class DayOfWeekHolidayRule implements HolidayRule {
 
     private final DayOfWeek dayOfWeek;
 
@@ -11,6 +11,7 @@ public class DayOfWeekHolidayRule {
         this.dayOfWeek = dayOfWeek;
     }
 
+    @Override
     public boolean isHoliday(LocalDate aDate) {
         return aDate.getDayOfWeek().equals(dayOfWeek);
     }
