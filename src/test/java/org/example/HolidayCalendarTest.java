@@ -19,7 +19,7 @@ class HolidayCalendarTest {
     void aDayOfWeekCanBeHoliday() {
         LocalDate aSaturday = LocalDate.of(2014, 3, 1);
         HolidayCalendar holidayCalendar = new HolidayCalendar();
-        holidayCalendar.makeDateOfWeekHoliday(new DayOfWeekHolidayRule(DayOfWeek.SATURDAY));
+        holidayCalendar.addHolidayRule(new DayOfWeekHolidayRule(DayOfWeek.SATURDAY));
         assertTrue(holidayCalendar.isHoliday(aSaturday));
     }
 
@@ -37,8 +37,8 @@ class HolidayCalendarTest {
         LocalDate aSaturday = LocalDate.of(2014, 3, 1);
         LocalDate aSunday = LocalDate.of(2014, 3, 2);
         HolidayCalendar holidayCalendar = new HolidayCalendar();
-        holidayCalendar.makeDateOfWeekHoliday(new DayOfWeekHolidayRule(DayOfWeek.SATURDAY));
-        holidayCalendar.makeDateOfWeekHoliday(new DayOfWeekHolidayRule(DayOfWeek.SUNDAY));
+        holidayCalendar.addHolidayRule(new DayOfWeekHolidayRule(DayOfWeek.SATURDAY));
+        holidayCalendar.addHolidayRule(new DayOfWeekHolidayRule(DayOfWeek.SUNDAY));
         assertTrue(holidayCalendar.isHoliday(aSaturday));
         assertTrue(holidayCalendar.isHoliday(aSunday));
     }
@@ -48,7 +48,7 @@ class HolidayCalendarTest {
     void aDayOfMonthCanBeHoliday() {
         LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
         HolidayCalendar holidayCalendar = new HolidayCalendar();
-        holidayCalendar.makeDateOfMonthHoliday(new DayOfMonthHolidayRule(1, 1));
+        holidayCalendar.addHolidayRule(new DayOfMonthHolidayRule(1, 1));
         assertTrue(holidayCalendar.isHoliday(aJanuaryFirst));
     }
 
@@ -57,7 +57,7 @@ class HolidayCalendarTest {
     void aDayOfMonthCanNotBeHoliday() {
         LocalDate aChristmas = LocalDate.of(2014, 12, 25);
         HolidayCalendar holidayCalendar = new HolidayCalendar();
-        holidayCalendar.makeDateOfMonthHoliday(new DayOfMonthHolidayRule(1, 1));
+        holidayCalendar.addHolidayRule(new DayOfMonthHolidayRule(1, 1));
         assertFalse(holidayCalendar.isHoliday(aChristmas));
     }
 
@@ -65,8 +65,8 @@ class HolidayCalendarTest {
     @DisplayName("more than one day of month can be holiday")
     void moreThanOneDayOfMonthCanBeHoliday() {
         HolidayCalendar holidayCalendar = new HolidayCalendar();
-        holidayCalendar.makeDateOfMonthHoliday(new DayOfMonthHolidayRule(1, 1));
-        holidayCalendar.makeDateOfMonthHoliday(new DayOfMonthHolidayRule(12, 25));
+        holidayCalendar.addHolidayRule(new DayOfMonthHolidayRule(1, 1));
+        holidayCalendar.addHolidayRule(new DayOfMonthHolidayRule(12, 25));
 
         LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
         LocalDate aChristmas = LocalDate.of(2014, 12, 25);
@@ -80,7 +80,7 @@ class HolidayCalendarTest {
     void aDayCanBeHoliday() {
         LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
         HolidayCalendar holidayCalendar = new HolidayCalendar();
-        holidayCalendar.makeDateAsHoliday(new DateHolidayRule(LocalDate.of(2014, 1, 1)));
+        holidayCalendar.addHolidayRule(new DateHolidayRule(LocalDate.of(2014, 1, 1)));
         assertTrue(holidayCalendar.isHoliday(aJanuaryFirst));
     }
 
@@ -96,8 +96,8 @@ class HolidayCalendarTest {
     @DisplayName("more than one day can be holiday")
     void moreThanOneDayCanBeHoliday() {
         HolidayCalendar holidayCalendar = new HolidayCalendar();
-        holidayCalendar.makeDateAsHoliday(new DateHolidayRule(LocalDate.of(2014, 1, 1)));
-        holidayCalendar.makeDateAsHoliday(new DateHolidayRule(LocalDate.of(2014, 12, 25)));
+        holidayCalendar.addHolidayRule(new DateHolidayRule(LocalDate.of(2014, 1, 1)));
+        holidayCalendar.addHolidayRule(new DateHolidayRule(LocalDate.of(2014, 12, 25)));
 
         LocalDate aJanuaryFirst = LocalDate.of(2014, 1, 1);
         LocalDate aChristmas = LocalDate.of(2014, 12, 25);

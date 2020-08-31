@@ -19,19 +19,11 @@ public class HolidayCalendar {
                 .anyMatch(aHolidayRule -> aHolidayRule.isHoliday(aDate));
     }
 
-    public void makeDateOfWeekHoliday(DayOfWeekHolidayRule holidayRule) {
+    public void addHolidayRule(HolidayRule holidayRule) {
         holidayRules.add(holidayRule);
     }
 
-    public void makeDateOfMonthHoliday(DayOfMonthHolidayRule holidayRule) {
-        holidayRules.add(holidayRule);
-    }
-
-    public void makeDateAsHoliday(DateHolidayRule holidayRule) {
-        holidayRules.add(holidayRule);
-    }
-
-    public void makeDateAsHoliday(LocalDate from, LocalDate to, DayOfWeek aDayOfWeek) {
+    public void addHolidayRule(LocalDate from, LocalDate to, DayOfWeek aDayOfWeek) {
 
     }
 }
