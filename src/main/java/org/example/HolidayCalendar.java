@@ -1,6 +1,5 @@
 package org.example;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,4 @@ public class HolidayCalendar {
         holidayRules.add(holidayRule);
     }
 
-    public void addHolidayRule(LocalDate from, LocalDate to, DayOfWeek aDayOfWeek) {
-
-    }
 }
