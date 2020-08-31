@@ -106,12 +106,13 @@ class HolidayCalendarTest {
         assertTrue(holidayCalendar.isHoliday(aChristmas));
     }
 
-//    @Test
-//    @DisplayName("a day of the week can be a holiday in a range of dates")
-//    void testRange01() {
-//        HolidayCalendar holidayCalendar = new HolidayCalendar();
-//        holidayCalendar.makeDateAsHoliday(LocalDate.of(1990, 1, 1),
-//                LocalDate.of(1999, 12, 31), DayOfWeek.MONDAY);
-//        assertTrue(holidayCalendar.isHoliday(LocalDate.of(1998, 3, 2)));
-//    }
+    @Test
+    @DisplayName("a day of the week can be a holiday in a range of dates")
+    void aDayOfTheWeekCanBeAHolidayInARangeOfDates() {
+        HolidayCalendar holidayCalendar = new HolidayCalendar();
+        holidayCalendar.addHolidayRule(new CompoundRangeHolidayRule(LocalDate.of(1990, 1, 1),
+                LocalDate.of(1999, 12, 31), new DayOfWeekHolidayRule(DayOfWeek.MONDAY)));
+        assertTrue(holidayCalendar.isHoliday(LocalDate.of(1998, 3, 2)));
+        assertTrue(holidayCalendar.isHoliday(LocalDate.of(1990, 1, 1)));
+    }
 }
