@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HolidayCalendar {
 
-    private final List<DayOfWeek> daysOfWeekHolidays = new ArrayList<>();
+    private final List<DayOfWeekHolidayRule> daysOfWeekHolidays = new ArrayList<>();
     private final List<MonthDay> daysOfMonthHoliday = new ArrayList<>();
     private final List<LocalDate> daysHoliday = new ArrayList<>();
 
@@ -27,11 +27,13 @@ public class HolidayCalendar {
     }
 
     private boolean isDayOfWeekHoliday(LocalDate aDate) {
-        return daysOfWeekHolidays.contains(aDate.getDayOfWeek());
+        return daysOfWeekHolidays
+                .stream()
+                .anyMatch(aHolidayRule -> aHolidayRule.isHoliday(aDate));
     }
 
-    public void makeDateOfWeekHoliday(DayOfWeek dayOfWeek) {
-        daysOfWeekHolidays.add(dayOfWeek);
+    public void makeDateOfWeekHoliday(DayOfWeekHolidayRule holidayRule) {
+        daysOfWeekHolidays.add(holidayRule);
     }
 
     public void makeDateOfMonthHoliday(int aMonthNumber, int aDayNumber) {
